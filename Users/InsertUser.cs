@@ -20,7 +20,8 @@ namespace SampleProduct.Users
 
             UserDefaultInitializer intializeValue = new UserDefaultInitializer();
             userList = intializeValue.InitializeUserDefaultValues(userList);
-            try {
+            try
+            {
                 connection.Open();
                 SqlCommand cmd = connection.CreateCommand();
                 cmd.CommandText = "EXECUTE InsertUserData @FirstName,@LastName,@FullName,@LoginName,@IsWindowsAuthenticated," +
@@ -69,7 +70,7 @@ namespace SampleProduct.Users
                     cmd.Parameters.Add("@ExternalUserId", SqlDbType.NVarChar, 50).Value = user.ExternalUserId;
                     cmd.Parameters.Add("@DomainId", SqlDbType.BigInt).Value = user.DomainId;
                     cmd.ExecuteNonQuery();
-                }                
+                }
 
                 Console.WriteLine("Data Inserted");
             }
@@ -77,11 +78,6 @@ namespace SampleProduct.Users
             {
                 Console.WriteLine(e.Message);
             }
-        
-
         }
-
-
-
     }
 }
